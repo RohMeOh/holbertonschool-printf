@@ -1,3 +1,4 @@
+
 # # _printf – Holberton School Project
 
 This project is part of the Holberton School curriculum.
@@ -13,7 +14,3 @@ Right now, our `_printf` handles:
 ## README Author
 
 - [@RohMeOh](https://www.github.com/RohMeOh)
-
-## Project contributor
-
-- [@Brocolii11](https://github.com/Brocolii11)
