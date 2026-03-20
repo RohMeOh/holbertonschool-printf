@@ -27,6 +27,18 @@ int print_string(char *s)
 
 	i = 0;
 	count = 0;
+
+	if (s == NULL)
+	{
+		count += print_char('(');
+		count += print_char('n');
+		count += print_char('u');
+		count += print_char('l');
+		count += print_char('l');
+		count += print_char(')');
+		return (count);
+	}
+
 	while (s[i] != '\0')
 	{
 		count += print_char(s[i]);
