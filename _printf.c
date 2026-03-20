@@ -1,0 +1,54 @@
+#include <stdarg.h>
+#include <unistd.h>
+#include "main.h"
+/**
+* _printf - prints formatted output to stdout
+* @format: format string
+* Return: number of characters printed, or -1 on error
+*/
+int _printf(const char *format, ...) 
+{
+    va_list args;    /* holds the ... arguments after format */
+    int count = 0;   /* total charactes printed (what we retun) */
+
+    if (format == NULL) /* ROMEO: no string to parse */
+        return (-1);
+
+    va_start(args, format);  /*init args so handle_specifier can ca_arg */
+
+    while (*format)  /* stop at end of C string '\0'*/
+    {
+        if (*format !='%') /* normal char, not a conversation */
+        {
+            /* stdout = fd 1; print exactly one byte at format*/
+            if (write(1, format, 1) == -1)  
+            {
+                va_end(args);
+                return (-1);
+            }
+            count++;  /* one character printed*/
+            format++; /*move to next char in format string*/
+        }
+        else  /* *format == '%', next char is c, s, %, etc. */
+        {
+            format++;  /* skip the '%'; next char is c, s, $, etc. */
+
+            if (*format == '\0')  /* sting ended right after '%' */
+            {
+                va_end(args);
+                return (-1);
+            }
+            
+            /*ROMEO: handle_specifier reads the right va_arg (char, char *, ...)
+            *and must return the number of bytes printed for this conversation.
+            */
+
+            count += handle_specifier(*format, args);
+            format++;  /*consumed specifier; continue*/
+        }
+    }
+
+    va_end(args);
+    return (count);
+}
+
