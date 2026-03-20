@@ -11,8 +11,10 @@
 int handle_specifier(char c, va_list args)
 {
 	int ch;
+	int count;
 	char *str;
 
+	count = 0;
 	if (c == 'c')
 	{
 		ch = va_arg(args, int);
@@ -30,6 +32,8 @@ int handle_specifier(char c, va_list args)
 		return (print_char('%'));
 	}
 
-	return (0);
+	count += print_char('%');
+	count += print_char(c);
+	return (count);
 }
 
