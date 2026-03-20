@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
     va_list args;    /* holds the ... arguments after format */
     int count = 0;   /* total charactes printed (what we retun) */
 
-    if (format == NULL) /* ROMEO: no string to parse */
+    if (format == NULL) /* ROMEO:*/
         return (-1);
 
     va_start(args, format);  /*init args so handle_specifier can ca_arg */
@@ -39,8 +39,7 @@ int _printf(const char *format, ...)
                 return (-1);
             }
             
-            /*ROMEO: handle_specifier reads the right va_arg (char, char *, ...)
-            *and must return the number of bytes printed for this conversation.
+            /*ROMEO: 
             */
 
             count += handle_specifier(*format, args);
