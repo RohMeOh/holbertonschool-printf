@@ -1,5 +1,3 @@
-#include <stdarg.h>
-#include <unistd.h>
 #include "main.h"
 /**
 * _printf - prints formatted output to stdout
@@ -11,7 +9,7 @@ int _printf(const char *format, ...)
     va_list args;    /* holds the ... arguments after format */
     int count = 0;   /* total charactes printed (what we retun) */
 
-    if (format == NULL) /* ROMEO:*/
+    if (format == NULL) 
         return (-1);
 
     va_start(args, format);  /*init args so handle_specifier can ca_arg */
@@ -39,8 +37,8 @@ int _printf(const char *format, ...)
                 return (-1);
             }
             
-            /*ROMEO: 
-            */
+            
+
 
             count += handle_specifier(*format, args);
             format++;  /*consumed specifier; continue*/
