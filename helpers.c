@@ -48,35 +48,50 @@ int print_string(char *s)
 }
 
 /**
+ * print_long - prints a long integer
+ * @num: long integer to print
+ *
+ * Return: number of characters printed
+ */
+int print_long(long num)
+{
+	int count;
+
+	count = 0;
+	if (num / 10)
+	{
+		count += print_long(num / 10);
+	}
+	count += print_char((num % 10) + '0');
+	return (count);
+}
+
+/**
  * print_int - prints an integer
  * @n: integer to print
  *
  * Return: number of characters printed
  */
-
 int print_int(int n)
 {
+	long num;
 	int count;
 
 	count = 0;
+	num = n;
 
-	if (n == 0)
+	if (num == 0)
 	{
 		return (print_char('0'));
 	}
 
-	if (n < 0)
+	if (num < 0)
 	{
 		count += print_char('-');
-		n = -n;
+		num = -num;
 	}
 
-	if (n / 10)
-	{
-		count += print_int(n / 10);
-	}
-
-	count += print_char((n % 10) + '0');
+	count += print_long(num);
 	return (count);
 }
 
