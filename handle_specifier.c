@@ -2,15 +2,15 @@
 
 /**
  * handle_specifier - decides what to do based on specifier
- * @c: specifier (c, s, %)
+ * @c: specifier (c, s, %, d, i)
  * @args: list of extra arguments
  *
  * Return: number of characters printed
  */
-
 int handle_specifier(char c, va_list args)
 {
 	int ch;
+	int num;
 	int count;
 	char *str;
 
@@ -30,6 +30,12 @@ int handle_specifier(char c, va_list args)
 	if (c == '%')
 	{
 		return (print_char('%'));
+	}
+
+	if (c == 'd' || c == 'i')
+	{
+		num = va_arg(args, int);
+		return (print_int(num));
 	}
 
 	count += print_char('%');

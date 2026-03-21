@@ -47,3 +47,36 @@ int print_string(char *s)
 	return (count);
 }
 
+/**
+ * print_int - prints an integer
+ * @n: integer to print
+ *
+ * Return: number of characters printed
+ */
+
+int print_int(int n)
+{
+	int count;
+
+	count = 0;
+
+	if (n == 0)
+	{
+		return (print_char('0'));
+	}
+
+	if (n < 0)
+	{
+		count += print_char('-');
+		n = -n;
+	}
+
+	if (n / 10)
+	{
+		count += print_int(n / 10);
+	}
+
+	count += print_char((n % 10) + '0');
+	return (count);
+}
+

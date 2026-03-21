@@ -1,4 +1,4 @@
- # _printf – Holberton School Project
+# # _printf – Holberton School Project
 
 This project is part of the Holberton School curriculum.
 
@@ -9,6 +9,8 @@ Right now, our `_printf` handles:
 - %c (characters)
 - %s (strings)
 - %% (printing a percent sign)
+- %d (signed integers)
+- %i (signed integers)
 
 ## README Author
 
@@ -18,7 +20,6 @@ Right now, our `_printf` handles:
 
 - [@RohMeOh](https://www.github.com/RohMeOh)
 - [@Brocolii11](https://www.github.com/Brocolii11)
-
 ## Acknowledgements
 
  - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
