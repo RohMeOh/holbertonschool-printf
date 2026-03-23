@@ -1,0 +1,93 @@
+.TH _PRINTF 3 "March 2026" "Holbertonschool" "Library Functions Manual"
+.SH NAME
+_printf \- print formatted output to standard output
+.SH SYNOPSIS
+.B #include "main.h"
+.PP
+.nf
+int _printf(const char *format, ...);
+.fi
+.SH DESCRIPTION
+The
+.B _printf()
+function writes to the standard output (stdout) under control of
+.IR format ,
+a string that contains ordinary characters and conversion specifiers
+introduced by
+.BR % .
+.PP
+This implementation supports a subset of the specifiers described in
+.BR printf (3).
+It does not implement flag characters, field width, precision, length
+modifiers, or the C library\(cqs printf buffering.
+.PP
+Supported conversion specifiers:
+.TP
+.B %c
+Print a single character from the corresponding
+.B int
+argument.
+.TP
+.B %s
+Print the string pointed to by the corresponding
+.B "char *"
+argument. If the pointer is NULL, the characters
+.B (null)
+are printed.
+.TP
+.B %%
+Print a literal
+.BR % .
+No argument is consumed.
+.TP
+.B %d,\ %i
+Print the signed decimal representation of the corresponding
+.B int
+argument.
+.PP
+If
+.I format
+contains
+.B %
+with no following character (end of string),
+.B _printf()
+returns \-1.
+.PP
+If
+.B %
+is followed by a character that is not one of the specifiers above,
+a literal
+.B %
+and that character are printed (two characters). No argument is read
+for that conversion.
+.SH RETURN VALUE
+On success,
+.B _printf()
+returns the number of characters printed (not counting string
+terminating null bytes in memory).
+.PP
+If
+.I format
+is NULL, if writing to standard output fails, or if the format string
+ends right after
+.BR % ,
+.B _printf()
+returns \-1.
+.SH EXAMPLES
+.RS
+.nf
+#include "main.h"
+
+_printf("Hello, world\\n");
+_printf("Char: %c\\n", 'Z');
+_printf("String: %s\\n", "Holberton");
+_printf("Percent: %%\\n");
+_printf("Int: %d\\n", 42);
+.fi
+.RE
+.SH SEE ALSO
+.BR printf (3),
+.BR write (2),
+.BR stdarg (3)
+.SH AUTHORS
+Romeo and Carlos.
